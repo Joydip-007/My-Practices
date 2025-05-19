@@ -1,18 +1,19 @@
 #include <iostream>
 using namespace std;
 
-// void change(int a){
-//     a = 20;
-//     cout << a << endl;
-// }
-
-void change(int *ptr){
-    *ptr = 20;
-    cout << *ptr << endl;
+void change(int &param){
+    param = 20;
+    cout << param   << endl;
 }
+
+// void change(int *ptr){
+//     *ptr = 20;
+//     cout << *ptr << endl;
+// }
 int main(){
     int a = 10;
-    change(&a);
+    cout << a << endl;
+    change(a);
 
     cout << a << endl;
 
