@@ -1,0 +1,15 @@
+USE hr;
+
+SELECT 
+    E.first_name,
+    E.department_id,
+    dept_avg.AVG_SALARY AS dept_avg_salary,
+    E.salary
+FROM EMPLOYEES E
+JOIN (
+    SELECT DEPARTMENT_ID, AVG(SALARY) AS AVG_SALARY
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID IS NOT NULL
+    GROUP BY DEPARTMENT_ID
+) dept_avg ON E.DEPARTMENT_ID = dept_avg.DEPARTMENT_ID
+WHERE E.SALARY > dept_avg.AVG_SALARY + 1000;
